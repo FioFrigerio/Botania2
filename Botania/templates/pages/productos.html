@@ -1,0 +1,75 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% load bootstrap5%}
+{% bootstrap_css%}
+{% bootstrap_javascript%}
+
+{% block titulo %} Productos {% endblock %}
+
+{% block contenido %}
+<div class="container text-center">
+    <br>
+    <h1>Productos</h1>
+    <br>
+    <hr>
+    <br>
+</div>
+<!--Inicio Carrusel-->
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'img/arbusto_muerto.png' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'img/bambu2.png' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{%static 'img/florespora2.png' %}" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<!--Fin Carrusel-->
+
+<br>
+<hr>
+<div class="container text-center">
+    <h1>Flores, bayas, Plantas exóticas y tierra</h1>
+</div>
+<hr><br>
+
+
+<!--Inicio cards-->
+<div class="row">
+    <div class="col-12">
+        <div class="row" style="padding: 10px;">
+            <div class="col-12">
+                <div class="row">
+                    {% for producto in productos %}
+                    <div class="card" style="width: 18rem;">
+                        <img src="{% static 'img/bambu.png' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{producto.nombre}}</h5>
+                            <p class="card-text">{{producto.tipoCatalogo}}</p>
+                            <p class="card-text">Embellecer el entorno. Añade color y vida a tu hogar.</p>
+                            <h6>{{producto.precio}}</h6>
+                            <a href="{% url 'agregarP' producto.id %}" class="btn btn-primary">Comprar</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Fin cards-->
+{% endblock %}

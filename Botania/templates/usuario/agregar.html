@@ -1,0 +1,23 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% load bootstrap5%}
+{% bootstrap_css%}
+{% bootstrap_javascript%}
+{% load crispy_forms_tags %}
+
+{% block titulo %} Agregar usuario {% endblock %}
+
+{% block contenido %}
+
+    <div class="card">
+        <div class="card-body">
+            <br>
+            <h4 class="card-title">Datos de usuario</h4>
+            <br>
+            {% include 'usuario/form.html' %}
+
+        </div>
+
+    </div>
+
+{% endblock %}

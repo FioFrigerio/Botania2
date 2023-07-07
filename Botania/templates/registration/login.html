@@ -1,0 +1,46 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% load bootstrap5%}
+{% bootstrap_css%}
+{% bootstrap_javascript%}
+{% load crispy_forms_tags %}
+
+{% block titulo %} Iniciar sesión {% endblock %}
+
+{% block contenido %}
+<div class="container text-center">
+    <br>
+    <h1>Iniciar sesión</h1>
+    <br>
+    <hr>
+    <br>
+</div>
+
+<!--box ingreso sesión-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 container-fluid">
+            <form action="" method='POST'>
+                {% csrf_token %}
+                <div class="mb-3 text-center">
+                    <label for="InputUsername" class="form-label">Nombre de usuario</label>
+                    <input type="text" name="username" class="form-control" id="InputUsername" placeholder="Nombre de usuario">
+                </div>
+                <div class="mb-3 text-center">
+                    <label for="InputPassword" class="form-label">Clave</label>
+                    <input type="password" name="password" class="form-control" id="InputPassword" placeholder="*********">
+                </div>
+                <div class="mb-3">
+                    <a href="{% url 'register' %}">Registrarse</a>
+                </div>
+                <div class="mb-3">
+                    <a href="#.html">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+<!--box ingreso sesión-->
+{% endblock %}

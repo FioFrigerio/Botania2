@@ -1,0 +1,54 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% block titulo %} Carrito {% endblock %}
+
+{% block contenido %}
+{% if request.user.is_authenticated %}
+
+<div class="container text-center">
+    <br>
+    <h1>Carrito</h1>
+    <br>
+    <hr>
+    <br>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col"> Nombre </th>
+            <th scope="col"> Precio </th>
+            <th scope="col"> Cantidad </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if request.session.carrito.items %}
+        {% for key, value in request.session.carrito.items %}
+        <tr>
+            <td>{{value.nombre}}</td>
+            <td>{{value.precio}}</td>
+            <td>{{value.cantidad}}
+                <a href="{% url 'agregarP' value.pk %}" class="badge btn btn-dark badge-dark">+</a>
+                <a href="{% url 'quitarP' value.pk %}" class="badge btn btn-dark badge-dark">-</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">
+                <div class="alert alert-danger text-center"> Sin Productos </div>
+            </td>
+        </tr>
+        {% endif %}
+        <tr>
+            <th> Total </th>
+            <td colspan="2"> {{total_c}} </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row text-center">
+    <div class="col-4"><a href="{% url 'limpiarP' %}" class="btn btn-danger">Limpiar carrito</a> </div>
+    <div class="col-4"><a href="{% url 'indice' %}" class="btn btn-primary">Comprar</a> </div>
+</div>
+{% endif %}
+{% endblock %}

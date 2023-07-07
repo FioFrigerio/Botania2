@@ -1,0 +1,56 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% load bootstrap5%}
+{% bootstrap_css%}
+{% bootstrap_javascript%}
+{% load crispy_forms_tags %}
+
+{% block titulo %} Agregar producto {% endblock %}
+
+{% block contenido %}
+
+    <div class="container text-center">
+        <br>
+        <h1>Catalogo</h1>
+        <hr>
+        <br>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-success" href="{% url 'agregar_catalogo' %}" role="button">Agregar Producto</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Producto</h4>
+            <div class="table">
+                <table class="table table-light">
+                    {% if user %}
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Precio</th>
+                            <th> </th>
+                        </tr>
+
+                    <tbody>
+                        {% for catalogo in catalogo %}
+                        <tr>
+                            <th>{{catalogo.id}} </th>
+                            <th>{{catalogo.nombre}} </th>
+                            <th>{{catalogo.tipoCatalogo}}</th>
+                            <th>{{catalogo.precio}} </th>
+                            <th><a name="" id="" class="btn btn-info" href="{% url 'modificar_catalogo' catalogo.pk %}" role="button">Modificar</a>
+                                <a name="" id="" class="btn btn-danger" href="{% url 'eliminar_catalogo' catalogo.pk %}" role="button">Eliminar</a>
+                            </th>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </thead>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
