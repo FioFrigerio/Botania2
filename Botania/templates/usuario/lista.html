@@ -1,0 +1,42 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% load bootstrap5%}
+{% bootstrap_css%}
+{% bootstrap_javascript%}
+
+{% block titulo %} Mi perfil {% endblock %}
+
+{% block contenido %}
+{% if request.user.is_authenticated %}
+<div class="container text-center">
+    <br>
+    <h1>Listado de usuarios</h1>
+    <hr>
+    <br>
+</div>
+<button type="button">
+    <a href="{url 'user7lista.html'}"></a>
+</button>
+<div id="mensaje">
+    {% if mensaje %}
+    {% end mensaje%}
+</div>
+<table>
+    {% if usuario%}
+    <th>Nombre</th>
+    <th>correo</th>
+    <th>Eliminar</th>
+    <th>Modificar</th>
+    {%vfor i in usuario%}
+    <tr>
+        <td>{{i.nombre}}
+        <td>{{i.correo}}
+        <td><a href="{% url 'usuaraio_eliminar' pk=i.user%} ">Eliminar</a>
+        <td><a href="{% url 'usuario_editar''%}">Modificar</a>
+            
+    </tr>
+    {% endfor %}
+    {% endif%}
+</table>
+{% endif %}
+{% endblock %}

@@ -24,7 +24,6 @@ class Usuario(models.Model):
     comuna = models.CharField(max_length=50, blank=False, null=False)
     codpos = models.CharField(max_length=7, blank=False, null=False)
     tipo_usuario = models.ForeignKey(tipo_usuario, on_delete=models.CASCADE, db_column='idtipo')
-    imagen = models.ImageField(upload_to='Botania/static/img/', null=True)
 
     def __str__(self):
         return str(self.nombre) + " " + str(self.apaterno) + " " + str(self.amaterno)

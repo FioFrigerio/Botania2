@@ -77,8 +77,7 @@ def modificar_usuario(request):
     return render(request, "usuario/modificar.html", context)
 
 def eliminar_usuario(request, pk):
-    usuario = Usuario.objects.get(id=pk)
-    usuario.delete()
+   
     return redirect('inicio')
 
 def modificar_usuario(request, pk):
@@ -155,3 +154,9 @@ def limpiarP(request):
     carrito.limpiar()
     return redirect('carrito')
 
+def crud(request):
+    usuario = Usuario.objects.all()
+    context = {
+        'usuario' : usuario
+    }
+    return render(request, 'usuario/lista.html', context)
